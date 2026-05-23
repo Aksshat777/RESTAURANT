@@ -1,0 +1,230 @@
+:root {
+  /* Color Theme */
+  --bg-dark: #0c0c0e;
+  --bg-darker: #050506;
+  --bg-card: rgba(18, 18, 22, 0.6);
+  --gold-primary: #d4af37;
+  --gold-hover: #c5a059;
+  --gold-glow: rgba(212, 175, 55, 0.2);
+  --ember-primary: #e65c00;
+  --ember-glow: rgba(230, 92, 0, 0.3);
+  --jade-primary: #4e8c6f;
+  --jade-glow: rgba(78, 140, 111, 0.2);
+  --text-primary: #f0f0f5;
+  --text-muted: #a0a0a5;
+  --text-gold: #e5c158;
+  --glass-overlay: rgba(12, 12, 14, 0.75);
+  --glass-border: rgba(212, 175, 55, 0.12);
+  --glass-border-light: rgba(255, 255, 255, 0.05);
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Outfit', sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Typography Custom Rules */
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-primary);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 8px;
+}
+
+.glass-nav {
+  background: rgba(12, 12, 14, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Glowing Effects */
+.gold-glow-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gold-glow-hover:hover {
+  box-shadow: 0 0 25px var(--gold-glow);
+  border-color: var(--gold-primary);
+}
+
+.ember-glow-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ember-glow-hover:hover {
+  box-shadow: 0 0 25px var(--ember-glow);
+  border-color: var(--ember-primary);
+}
+
+/* Interactive Elements & Animations */
+.btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--gold-primary);
+  border: 1px solid var(--gold-primary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 4px;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.1),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  background: var(--gold-primary);
+  color: var(--bg-darker);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.btn-solid-gold {
+  background: var(--gold-primary);
+  color: var(--bg-darker);
+  border: 1px solid var(--gold-primary);
+  padding: 12px 28px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 4px;
+}
+
+.btn-solid-gold:hover {
+  background: var(--gold-hover);
+  border-color: var(--gold-hover);
+  box-shadow: 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+.btn-solid-gold:active {
+  transform: translateY(0);
+}
+
+/* Section Shells */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+  margin: 20px auto 40px auto;
+}
+
+/* Micro animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Grid layout utility */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Mobile responsive menu */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+}

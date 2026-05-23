@@ -17,13 +17,16 @@ const FrameSequencePlayer = () => {
   useEffect(() => {
     let loadedCount = 0;
     const images = [];
+    const REQUIRED_FRAMES = 30; // Unlock site early after 30 frames are ready
+    let unlocked = false;
 
     const handleImageLoad = () => {
       loadedCount++;
       const percent = Math.round((loadedCount / TOTAL_FRAMES) * 100);
       setProgress(percent);
 
-      if (loadedCount === TOTAL_FRAMES) {
+      if (!unlocked && (loadedCount >= REQUIRED_FRAMES || loadedCount === TOTAL_FRAMES)) {
+        unlocked = true;
         imagesRef.current = images;
         setLoading(false);
       }
